@@ -77,6 +77,10 @@ li.ask small{display:block;margin-top:7px;font:400 14.5px/1.35 Barlow,system-ui,
 .end .btn{display:inline-flex;min-width:240px;margin-top:24px}
 .end .n{margin:26px 0 0;color:var(--mute);font-size:12.5px;letter-spacing:.08em}
 .end .n a{color:var(--cream)}
+.plate{position:relative}
+.lang{position:absolute;top:14px;right:14px;padding:7px 14px;border-radius:999px;border:1.5px solid #15100d;background:#fff;color:#15100d;font-weight:700;font-size:13px;letter-spacing:.04em;text-decoration:none}
+.alg{margin:22px 18px 0;padding:12px 14px;border:1px dashed rgba(247,239,226,.35);border-radius:14px;font-size:13.5px;line-height:1.4;color:var(--cream);text-align:center}
+.alg b{color:var(--gold)}
 @media print{
  @page{margin:0;size:108mm 2000mm}
  html{background:#15100d}
@@ -89,12 +93,13 @@ li.ask small{display:block;margin-top:7px;font:400 14.5px/1.35 Barlow,system-ui,
 <body>
 <div class="pg"><div class="cover">
 <span class="flag"></span>
-<div class="plate"><img src="img/hero.jpg" alt="Pizza Loco"></div>
+<div class="plate"><a class="lang noprint" href="en.html">English</a><img src="img/hero.jpg" alt="Pizza Loco"></div>
 <p class="tag">Pizza napolitana · Granada</p>
 <p class="hook">Aviso:<em>esta carta da hambre</em></p>
 <p class="lead">Masa napolitana, tomate San Marzano y Fior di latte. Lo demás, lo eliges tú.</p>
 <div class="cta noprint"><a class="btn" href="https://www.google.com/maps/place/Pizza+Loco/@37.1681584,-3.6095901,17z/data=!3m2!4b1!5s0xd71fc90a5211197:0x7edf0a3a55f35c3c!4m6!3m5!1s0xd71fc90ae47c753:0xa0e72d3e5dff9bd8!8m2!3d37.1681584!4d-3.6070152!16s%2Fg%2F11fx8hhqfs">Cómo llegar</a><a class="btn ghost" href="carta.pdf">Carta en PDF</a></div>
 <div class="index"><a href="#entrantes">Entrantes</a><a href="#ensaladas">Ensaladas</a><a href="#burguer">Burguer</a><a href="#pastas">Pastas</a><a href="#clasicas">Clásicas</a><a href="#especiales">Especiales</a><a href="#panouzzo">Panouzzo</a><a href="#postres">Postres</a></div>
+<p class="alg"><b>Alergias e intolerancias:</b> avisa a nuestro personal antes de pedir.</p>
 </div>
 <div class="promo">
 <div class="t"><p class="k">¿Ya la has probado?</p><h2>Pizza<br>Portafoglio</h2>
@@ -109,7 +114,8 @@ li.ask small{display:block;margin-top:7px;font:400 14.5px/1.35 Barlow,system-ui,
 <p class="k">Te esperamos</p>
 <h2>¿Ya sabes cuál<br>vas a pedir?</h2>
 <a class="btn" href="https://www.google.com/maps/place/Pizza+Loco/@37.1681584,-3.6095901,17z/data=!3m2!4b1!5s0xd71fc90a5211197:0x7edf0a3a55f35c3c!4m6!3m5!1s0xd71fc90ae47c753:0xa0e72d3e5dff9bd8!8m2!3d37.1681584!4d-3.6070152!16s%2Fg%2F11fx8hhqfs">Cómo llegar a Pizza Loco</a>
-<p class="n">Precios en euros<span class="noprint"> · <a href="carta.pdf">Descargar carta en PDF</a></span></p>
+<p class="alg"><b>Alergias e intolerancias:</b> avisa a nuestro personal antes de pedir.</p>
+<p class="n">Precios en euros · IVA incluido<span class="noprint"> · <a href="carta.pdf">Descargar carta en PDF</a></span></p>
 </div>
 <script>try{var L=[].slice.call(document.querySelectorAll('.bar a')),O=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){L.forEach(function(a){var on=a.getAttribute('href')=='#'+x.target.id;a.classList.toggle('on',on);if(on)a.scrollIntoView({inline:'center',block:'nearest'})})}})},{rootMargin:'-30% 0px -60% 0px'});document.querySelectorAll('section').forEach(function(s){O.observe(s)})}catch(e){}</script>
 </body>

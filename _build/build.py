@@ -43,6 +43,21 @@ ASK = {  # gancho de curiosidad que aparece justo antes de ese plato
  ("panouzzo", "Romana"): ("¿Calamares a la romana dentro de nuestra masa?", "Eso es el Panouzzo Romana."),
 }
 e = html.escape
+LANG = sys.argv[2] if len(sys.argv) > 2 else "es"
+sys.path.insert(0, str(here))
+from en_data import EN, DESC_EN
+OUT_HTML, OUT_PDF = ("en.html", "menu-en.pdf") if LANG == "en" else ("index.html", "carta.pdf")
+
+
+def tr(s):
+    if LANG == "es":
+        return s
+    assert s in EN, "falta traducir: " + s
+    return EN.get(s, s)
+
+
+def dtr(sec, name, desc):
+    return desc if LANG == "es" else DESC_EN[sec][name]
 
 
 def items(sec):
@@ -50,31 +65,31 @@ def items(sec):
     for name, price, desc in DATA[sec]:
         if (sec, name) in ASK:
             q, a = ASK[(sec, name)]
-            out.append(f'<li class="ask">{e(q)}<small>{e(a)}</small></li>')
+            out.append(f'<li class="ask">{e(tr(q))}<small>{e(tr(a))}</small></li>')
         badge = FEAT.get((sec, name))
-        hot = '<span class="hot">Picante</span>' if (sec, name) in HOT else ''
+        hot = f'<span class="hot">{tr("Picante")}</span>' if (sec, name) in HOT else ''
         out.append(
             f'<li class="{"feat" if badge else ""}">'
-            + (f'<span class="badge">{e(badge)}</span>' if badge else '')
+            + (f'<span class="badge">{e(tr(badge))}</span>' if badge else '')
             + f'<div class="top"><h3>{e(name)}{hot}</h3><b>{price}</b></div>'
-            + (f'<p>{e(desc)}</p>' if desc else '') + '</li>')
+            + (f'<p>{e(dtr(sec, name, desc))}</p>' if dtr(sec, name, desc) else '') + '</li>')
     return "".join(out)
 
 
 def section(sid, _short, title, kicker, img, kind):
     if kind == "photo":
         head = (f'<div class="sh photo"><img src="img/{img}" alt=""><div class="ov"></div>'
-                f'<p class="k">{e(kicker)}</p><h2>{title}</h2></div>')
+                f'<p class="k">{e(tr(kicker))}</p><h2>{tr(title) if title in EN else title}</h2></div>')
     else:
         circ = f'<img class="circ" src="img/{img}" alt="">' if kind == "circle" else ''
-        extra = ('<p class="trio">Masa napolitana · Tomate San Marzano · Fior di latte</p>'
+        extra = (f'<p class="trio">{tr("Masa napolitana · Tomate San Marzano · Fior di latte")}</p>'
                  if sid == "clasicas" else '')
         head = (f'<div class="sh plain">{circ}<span class="flag s"></span>'
-                f'<p class="k">{e(kicker)}</p><h2>{title}</h2>{extra}</div>')
+                f'<p class="k">{e(tr(kicker))}</p><h2>{tr(title) if title in EN else title}</h2>{extra}</div>')
     return f'<section class="pg" id="{sid}">{head}<ul>{items(sid)}</ul></section>'
 
 
-pills = "".join(f'<a href="#{s[0]}">{e(s[1])}</a>' for s in SECS)
+pills = "".join(f'<a href="#{s[0]}">{e(tr(s[1]) if s[1] in EN else s[1])}</a>' for s in SECS)
 
 CSS = """
 @font-face{font-family:Bebas;src:url(fonts/BebasNeue-Regular.woff2) format("woff2");font-display:swap}
@@ -147,6 +162,10 @@ li.ask small{display:block;margin-top:7px;font:400 14.5px/1.35 Barlow,system-ui,
 .end .btn{display:inline-flex;min-width:240px;margin-top:24px}
 .end .n{margin:26px 0 0;color:var(--mute);font-size:12.5px;letter-spacing:.08em}
 .end .n a{color:var(--cream)}
+.plate{position:relative}
+.lang{position:absolute;top:14px;right:14px;padding:7px 14px;border-radius:999px;border:1.5px solid #15100d;background:#fff;color:#15100d;font-weight:700;font-size:13px;letter-spacing:.04em;text-decoration:none}
+.alg{margin:22px 18px 0;padding:12px 14px;border:1px dashed rgba(247,239,226,.35);border-radius:14px;font-size:13.5px;line-height:1.4;color:var(--cream);text-align:center}
+.alg b{color:var(--gold)}
 @media print{
  @page{margin:0;size:108mm 2000mm}
  html{background:#15100d}
@@ -158,29 +177,33 @@ li.ask small{display:block;margin-top:7px;font:400 14.5px/1.35 Barlow,system-ui,
 
 JS = """try{var L=[].slice.call(document.querySelectorAll('.bar a')),O=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){L.forEach(function(a){var on=a.getAttribute('href')=='#'+x.target.id;a.classList.toggle('on',on);if(on)a.scrollIntoView({inline:'center',block:'nearest'})})}})},{rootMargin:'-30% 0px -60% 0px'});document.querySelectorAll('section').forEach(function(s){O.observe(s)})}catch(e){}"""
 
+ALG = f'<p class="alg"><b>{tr("Alergias e intolerancias:")}</b> {tr("avisa a nuestro personal antes de pedir.")}</p>'
+OTHER = ('<a class="lang noprint" href="./">Español</a>' if LANG == "en"
+         else '<a class="lang noprint" href="en.html">English</a>')
 page = f"""<!doctype html>
-<html lang="es">
+<html lang="{LANG}">
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Carta · Pizza Loco</title>
-<meta name="description" content="La carta de Pizza Loco, Granada: pizza napolitana, pastas, burguers, panouzzo y postres.">
+<title>{tr("Carta · Pizza Loco")}</title>
+<meta name="description" content="{tr("La carta de Pizza Loco, Granada: pizza napolitana, pastas, burguers, panouzzo y postres.")}">
 <meta name="theme-color" content="#15100d">
 <style>{CSS}</style>
 </head>
 <body>
 <div class="pg"><div class="cover">
 <span class="flag"></span>
-<div class="plate"><img src="img/hero.jpg" alt="Pizza Loco"></div>
-<p class="tag">Pizza napolitana · Granada</p>
-<p class="hook">Aviso:<em>esta carta da hambre</em></p>
-<p class="lead">Masa napolitana, tomate San Marzano y Fior di latte. Lo demás, lo eliges tú.</p>
-<div class="cta noprint"><a class="btn" href="{MAP}">Cómo llegar</a><a class="btn ghost" href="carta.pdf">Carta en PDF</a></div>
+<div class="plate">{OTHER}<img src="img/hero.jpg" alt="Pizza Loco"></div>
+<p class="tag">{tr("Pizza napolitana · Granada")}</p>
+<p class="hook">{tr("Aviso:")}<em>{tr("esta carta da hambre")}</em></p>
+<p class="lead">{tr("Masa napolitana, tomate San Marzano y Fior di latte. Lo demás, lo eliges tú.")}</p>
+<div class="cta noprint"><a class="btn" href="{MAP}">{tr("Cómo llegar")}</a><a class="btn ghost" href="{OUT_PDF}">{tr("Carta en PDF")}</a></div>
 <div class="index">{pills}</div>
+{ALG}
 </div>
 <div class="promo">
-<div class="t"><p class="k">¿Ya la has probado?</p><h2>Pizza<br>Portafoglio</h2>
-<p class="d">Doblada y lista para comer con la mano.</p><div class="price">5<span>€</span></div></div>
+<div class="t"><p class="k">{tr("¿Ya la has probado?")}</p><h2>Pizza<br>Portafoglio</h2>
+<p class="d">{tr("Doblada y lista para comer con la mano.")}</p><div class="price">5<span>€</span></div></div>
 <img src="img/portafoglio.jpg" alt="Pizza Portafoglio">
 </div>
 </div>
@@ -188,16 +211,17 @@ page = f"""<!doctype html>
 {"".join(section(*s) for s in SECS)}
 <div class="pg end">
 <span class="flag s"></span>
-<p class="k">Te esperamos</p>
-<h2>¿Ya sabes cuál<br>vas a pedir?</h2>
-<a class="btn" href="{MAP}">Cómo llegar a Pizza Loco</a>
-<p class="n">Precios en euros<span class="noprint"> · <a href="carta.pdf">Descargar carta en PDF</a></span></p>
+<p class="k">{tr("Te esperamos")}</p>
+<h2>{tr("¿Ya sabes cuál<br>vas a pedir?")}</h2>
+<a class="btn" href="{MAP}">{tr("Cómo llegar a Pizza Loco")}</a>
+{ALG}
+<p class="n">{tr("Precios en euros · IVA incluido")}<span class="noprint"> · <a href="{OUT_PDF}">{tr("Descargar carta en PDF")}</a></span></p>
 </div>
 <script>{JS}</script>
 </body>
 </html>
 """
-(repo / "index.html").write_text(page, encoding="utf-8")
+(repo / OUT_HTML).write_text(page, encoding="utf-8")
 
 # --- PDF: 1ª pasada mide cada bloque .pg; 2ª pasada da a cada uno su propia página a medida
 def render(extra_css=""):
@@ -220,5 +244,5 @@ parts = out.split('class="pg')
 out = parts[0] + "".join(f'style="page:p{i}" class="pg' + p for i, p in enumerate(parts[1:]))
 rules = "".join(f"@page p{i}{{size:108mm {h * 25.4 / 96 + 0.3:.2f}mm;margin:0}}" for i, h in enumerate(heights))
 doc = HTML(string=out.replace("</style>", rules + "</style>", 1), base_url=str(repo) + "/").render()
-doc.write_pdf(str(repo / "carta.pdf"))
+doc.write_pdf(str(repo / OUT_PDF))
 print("bloques:", len(heights), "paginas:", len(doc.pages), "alturas mm:", [round(h * 25.4 / 96) for h in heights])

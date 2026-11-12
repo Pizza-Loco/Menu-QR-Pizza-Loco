@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Menu · Pizza Loco</title>
+<meta name="description" content="The Pizza Loco menu, Granada: Neapolitan pizza, pasta, burgers, panouzzo and desserts.">
+<meta name="theme-color" content="#15100d">
+<style>
+@font-face{font-family:Bebas;src:url(fonts/BebasNeue-Regular.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Kaushan;src:url(fonts/KaushanScript-Regular.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Barlow;font-weight:400;src:url(fonts/Barlow-Regular.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Barlow;font-weight:500;src:url(fonts/Barlow-Medium.woff2) format("woff2");font-display:swap}
+@font-face{font-family:Barlow;font-weight:700;src:url(fonts/Barlow-Bold.woff2) format("woff2");font-display:swap}
+:root{--bg:#15100d;--s:#221a14;--line:rgba(247,239,226,.1);--cream:#f7efe2;--mute:#b9ab9a;--red:#e23b24;--gold:#f5b942;--green:#2f9e55}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html{background:#0b0806;scroll-behavior:smooth}
+body{margin:0 auto;max-width:480px;background:var(--bg);color:var(--cream);font:400 16px/1.45 Barlow,system-ui,sans-serif;-webkit-text-size-adjust:100%}
+a{color:inherit}
+.flag{display:block;height:5px;background:linear-gradient(90deg,#2f9e55 33.3%,#f7efe2 33.3%,#f7efe2 66.6%,#e23b24 66.6%)}
+.flag.s{width:66px;height:4px;border-radius:2px;margin-bottom:14px}
+
+.cover{text-align:center;padding-bottom:30px}
+.plate{background:#fff;border-radius:0 0 50% 50%/0 0 20% 20%;padding:22px 16px 40px}
+.plate img{width:88%;height:auto;display:block;margin:0 auto}
+.tag{margin:26px 0 10px;font-weight:500;font-size:12.5px;letter-spacing:.32em;text-transform:uppercase;color:var(--gold)}
+.hook{margin:0 16px;font:400 58px/.92 Bebas,Impact,sans-serif;letter-spacing:.01em}
+.hook em{display:block;margin-top:6px;font:400 38px/1.05 Kaushan,cursive;color:var(--red);letter-spacing:0}
+.lead{margin:16px 34px 0;color:var(--mute);font-size:15.5px}
+.cta{display:flex;gap:10px;padding:24px 16px 0}
+.btn{flex:1;display:flex;align-items:center;justify-content:center;min-height:52px;padding:0 16px;border-radius:14px;font-weight:700;font-size:16px;letter-spacing:.02em;text-decoration:none;background:var(--red);color:#fff}
+.btn.ghost{background:transparent;border:1.5px solid rgba(247,239,226,.35);color:var(--cream)}
+.index{display:none;flex-wrap:wrap;justify-content:center;gap:8px;padding:26px 20px 0}
+.index a,.bar a{flex:none;text-decoration:none;font-weight:500;font-size:14.5px;padding:8px 15px;border-radius:999px;border:1px solid rgba(247,239,226,.22)}
+.bar{position:sticky;top:0;z-index:9;display:flex;gap:8px;overflow-x:auto;padding:10px 12px;background:rgba(21,16,13,.97);border-bottom:1px solid var(--line);scrollbar-width:none}
+.bar a.on{background:var(--gold);border-color:var(--gold);color:var(--bg);font-weight:700}
+
+.promo{background:var(--red);padding:30px 20px 28px;display:flex;align-items:center;gap:12px}
+.promo .t{flex:1}
+.promo .k{color:#fff;font-size:24px}
+.promo h2{font-size:50px;color:#fff}
+.promo p.d{margin:8px 0 0;font-size:15px;color:#ffe3dc;line-height:1.35}
+.promo .price{margin-top:8px;font:400 104px/.85 Bebas,Impact,sans-serif;color:var(--gold)}
+.promo .price span{font-size:60px}
+.promo img{flex:none;width:158px;height:158px;border-radius:50%;object-fit:cover;border:5px solid var(--cream)}
+
+section{scroll-margin-top:58px}
+.sh{position:relative}
+.sh.photo{height:290px;display:flex;flex-direction:column;justify-content:flex-end;padding:0 18px 10px;overflow:hidden}
+.sh.photo img,.sh .ov{position:absolute;top:0;left:0;width:100%;height:100%}
+.sh.photo img{object-fit:cover}
+.sh .ov{background:linear-gradient(180deg,rgba(21,16,13,0) 30%,rgba(21,16,13,.72) 68%,#15100d 100%)}
+.sh.photo .k,.sh.photo h2{position:relative}
+.sh.plain{padding:46px 18px 4px}
+.circ{position:absolute;right:18px;top:34px;width:132px;height:132px;border-radius:50%;object-fit:cover;border:4px solid var(--gold)}
+.k{margin:0;font:400 23px/1.1 Kaushan,cursive;color:var(--gold)}
+h2{margin:4px 0 0;font:400 68px/.9 Bebas,Impact,sans-serif;letter-spacing:.01em}
+.trio{margin:14px 0 0;font-weight:500;font-size:12px;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
+
+ul{list-style:none;margin:0;padding:6px 18px 22px}
+li{padding:15px 0;border-bottom:1px solid var(--line)}
+li:last-child{border-bottom:0}
+.top{display:flex;justify-content:space-between;align-items:baseline;gap:14px}
+h3{margin:0;font:700 17px/1.22 Barlow,system-ui,sans-serif;letter-spacing:.035em;text-transform:uppercase}
+.top b{flex:none;font:400 25px/1 Bebas,Impact,sans-serif;letter-spacing:.02em;color:var(--gold)}
+li p{margin:5px 0 0;max-width:86%;color:var(--mute);font-size:14.5px;line-height:1.42}
+.hot{display:inline-block;margin-left:8px;padding:2px 8px;border-radius:999px;background:var(--red);color:#fff;font-size:10px;letter-spacing:.12em;vertical-align:middle}
+li.feat{margin:12px -8px;padding:14px 16px 16px;border:1.5px solid rgba(245,185,66,.6);border-radius:18px;background:var(--s)}
+.badge{display:inline-block;margin-bottom:9px;padding:3px 10px;border-radius:999px;background:var(--gold);color:var(--bg);font-weight:700;font-size:10.5px;letter-spacing:.16em;text-transform:uppercase}
+li.feat h3{font-size:19px}
+li.ask{margin:12px 0 4px;padding:16px 18px;border:0;border-left:4px solid var(--red);border-radius:0 16px 16px 0;background:var(--s);font:400 23px/1.2 Kaushan,cursive}
+li.ask small{display:block;margin-top:7px;font:400 14.5px/1.35 Barlow,system-ui,sans-serif;color:var(--mute)}
+
+.end{text-align:center;padding:50px 22px 44px;border-top:1px solid var(--line)}
+.end .flag.s{margin:0 auto 18px}
+.end h2{font-size:58px}
+.end .btn{display:inline-flex;min-width:240px;margin-top:24px}
+.end .n{margin:26px 0 0;color:var(--mute);font-size:12.5px;letter-spacing:.08em}
+.end .n a{color:var(--cream)}
+.plate{position:relative}
+.lang{position:absolute;top:14px;right:14px;padding:7px 14px;border-radius:999px;border:1.5px solid #15100d;background:#fff;color:#15100d;font-weight:700;font-size:13px;letter-spacing:.04em;text-decoration:none}
+.alg{margin:22px 18px 0;padding:12px 14px;border:1px dashed rgba(247,239,226,.35);border-radius:14px;font-size:13.5px;line-height:1.4;color:var(--cream);text-align:center}
+.alg b{color:var(--gold)}
+@media print{
+ @page{margin:0;size:108mm 2000mm}
+ html{background:#15100d}
+ body{max-width:none}
+ .bar,.noprint{display:none}
+ .index{display:flex}
+}
+</style>
+</head>
+<body>
+<div class="pg"><div class="cover">
+<span class="flag"></span>
+<div class="plate"><a class="lang noprint" href="./">Español</a><img src="img/hero.jpg" alt="Pizza Loco"></div>
+<p class="tag">Neapolitan pizza · Granada</p>
+<p class="hook">Warning:<em>this menu makes you hungry</em></p>
+<p class="lead">Neapolitan dough, San Marzano tomato and Fior di latte. The rest is up to you.</p>
+<div class="cta noprint"><a class="btn" href="https://www.google.com/maps/place/Pizza+Loco/@37.1681584,-3.6095901,17z/data=!3m2!4b1!5s0xd71fc90a5211197:0x7edf0a3a55f35c3c!4m6!3m5!1s0xd71fc90ae47c753:0xa0e72d3e5dff9bd8!8m2!3d37.1681584!4d-3.6070152!16s%2Fg%2F11fx8hhqfs">Get directions</a><a class="btn ghost" href="menu-en.pdf">Menu as PDF</a></div>
+<div class="index"><a href="#entrantes">Starters</a><a href="#ensaladas">Salads</a><a href="#burguer">Burguer</a><a href="#pastas">Pasta</a><a href="#clasicas">Classics</a><a href="#especiales">Specials</a><a href="#panouzzo">Panouzzo</a><a href="#postres">Desserts</a></div>
+<p class="alg"><b>Allergies or intolerances?</b> Please tell our staff before ordering.</p>
+</div>
+<div class="promo">
+<div class="t"><p class="k">Tried it yet?</p><h2>Pizza<br>Portafoglio</h2>
+<p class="d">Folded and ready to eat with your hands.</p><div class="price">5<span>€</span></div></div>
+<img src="img/portafoglio.jpg" alt="Pizza Portafoglio">
+</div>
+</div>
+<nav class="bar"><a href="#entrantes">Starters</a><a href="#ensaladas">Salads</a><a href="#burguer">Burguer</a><a href="#pastas">Pasta</a><a href="#clasicas">Classics</a><a href="#especiales">Specials</a><a href="#panouzzo">Panouzzo</a><a href="#postres">Desserts</a></nav>
+<section class="pg" id="entrantes"><div class="sh photo"><img src="img/piadina.jpg" alt=""><div class="ov"></div><p class="k">To get you started</p><h2>Starters</h2></div><ul><li class=""><div class="top"><h3>Piadina</h3><b>3,90</b></div><p>Our Neapolitan dough, extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Pan de ajo</h3><b>5,50</b></div><p>Garlic bread: our Neapolitan dough filled with mozzarella, tomato and garlic.</p></li><li class=""><div class="top"><h3>Paté piadina</h3><b>10,00</b></div><p>The best pâté, served with our Neapolitan base.</p></li><li class=""><div class="top"><h3>Provolone pizzaiola</h3><b>12,00</b></div><p>Provolone cheese, San Marzano tomato, oregano, extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Mozzarella al horno</h3><b>10,00</b></div><p>Oven-baked Fior di latte mozzarella, San Marzano tomato, oregano, extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Minicalzone fromaggio</h3><b>8,00</b></div><p>Our Neapolitan dough filled with four cheeses.</p></li><li class=""><div class="top"><h3>Patatas bravas<span class="hot">Spicy</span></h3><b>8,00</b></div><p>Potato wedges with our spicy brava sauce.</p></li><li class="feat"><span class="badge">To share</span><div class="top"><h3>Patatas locas</h3><b>9,00</b></div><p>Seasoned potatoes, white sauce, ranch sauce, crispy bacon, melted cheese blend.</p></li><li class=""><div class="top"><h3>Nuggets de pollo</h3><b>7,50</b></div><p>Real chicken nuggets with fries.</p></li></ul></section><section class="pg" id="ensaladas"><div class="sh photo"><img src="img/caprese.jpg" alt=""><div class="ov"></div><p class="k">Fresh and colourful</p><h2>Salads</h2></div><ul><li class=""><div class="top"><h3>Capresse</h3><b>9,00</b></div><p>Select tomatoes, fresh mozzarella, rocket, oregano, extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Ensalada César</h3><b>10,00</b></div><p>Caesar salad: mixed lettuce, crispy chicken, croutons, cheese, crispy onion, cooked ham, Caesar dressing.</p></li><li class=""><div class="top"><h3>Ensalada Tropical</h3><b>9,00</b></div><p>Mixed lettuce, sweetcorn, cooked ham, pineapple, carrot, croutons, crab sticks (surimi), cocktail sauce.</p></li><li class=""><div class="top"><h3>Ensalada Mixta</h3><b>8,00</b></div><p>Mixed lettuce, tomato, sweetcorn, carrot, olives, tuna, beetroot.</p></li></ul></section><section class="pg" id="burguer"><div class="sh plain"><span class="flag s"></span><p class="k">For serious hunger</p><h2>Burguer<br>&amp; Food</h2></div><ul><li class=""><div class="top"><h3>Burguer Pollo</h3><b>7,80</b></div><p>Crispy chicken, lettuce, tomato, cheese, caramelised onion, sauces and fries.</p></li><li class=""><div class="top"><h3>Burguer Clásica</h3><b>7,00</b></div><p>100% beef, lettuce, tomato, cheese, sauces and fries.</p></li><li class=""><div class="top"><h3>Cheese Burguer</h3><b>8,50</b></div><p>100% beef, lettuce, tomato, cheese, bacon, egg, sauces and fries.</p></li><li class="feat"><span class="badge">A name of its own</span><div class="top"><h3>Burguer Pica Loco<span class="hot">Spicy</span></h3><b>8,00</b></div><p>100% beef, lettuce, tomato, cheese, crispy onion, jalapeños, sauces and fries.</p></li><li class=""><div class="top"><h3>Costillar barbacoa</h3><b>18,00</b></div><p>Oven-baked pork ribs marinated in barbecue sauce, with potato wedges.</p></li><li class=""><div class="top"><h3>Polpette pizzaiola</h3><b>14,00</b></div><p>Meatballs, San Marzano tomato, parmesan, basil, extra virgin olive oil. Served with our Neapolitan dough.</p></li></ul></section><section class="pg" id="pastas"><div class="sh photo"><img src="img/pasta.jpg" alt=""><div class="ov"></div><p class="k">Creamy, oven-baked, with parmesan</p><h2>Pasta</h2></div><ul><li class="feat"><span class="badge">Oven-baked</span><div class="top"><h3>Tortiglioni horno</h3><b>12,00</b></div><p>Oven-baked tortiglioni, tomato, cream, mushrooms, m. pizza, bolognese, hard-boiled egg, mozzarella and extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Lasaña boloñesa</h3><b>12,00</b></div><p>Bolognese lasagne: pasta, bolognese sauce, béchamel, mozzarella, parmesan.</p></li><li class=""><div class="top"><h3>Lasaña vegetal</h3><b>12,00</b></div><p>Vegetable lasagne: pasta, vegetables, béchamel, tomato, mozzarella, parmesan.</p></li><li class=""><div class="top"><h3>Berenjenas parmesana</h3><b>12,00</b></div><p>Aubergine parmigiana: aubergine, San Marzano tomato, béchamel, mozzarella, parmesan.</p></li><li class=""><div class="top"><h3>Espaguetis carbonara</h3><b>10,00</b></div><p>Spaghetti, cream, bacon, egg, pepper.</p></li><li class=""><div class="top"><h3>Espaguetis boscaiola</h3><b>9,00</b></div><p>Spaghetti, cooked ham, mushrooms, San Marzano tomato, cream, parmesan.</p></li><li class=""><div class="top"><h3>Tortiglioni o gnocchi boloñesa</h3><b>9,00</b></div><p>Tortiglioni or gnocchi, bolognese sauce, San Marzano tomato.</p></li><li class=""><div class="top"><h3>Tortiglioni o gnocchi 4 quesos</h3><b>10,00</b></div><p>Tortiglioni or gnocchi, cream, four-cheese mix.</p></li><li class=""><div class="top"><h3>Tortellini ricota / espinacas</h3><b>12,00</b></div><p>Ricotta and spinach tortellini, basil cream, walnuts, parmesan.</p></li><li class=""><div class="top"><h3>Ravioli de carne</h3><b>12,00</b></div><p>Meat ravioli, pesto, parmesan.</p></li><li class=""><div class="top"><h3>Pappardelle funguiporcini</h3><b>12,00</b></div><p>Pappardelle, cream, parmesan, truffle sauce, mixed mushrooms and porcini.</p></li></ul></section><section class="pg" id="clasicas"><div class="sh plain"><img class="circ" src="img/pizza.jpg" alt=""><span class="flag s"></span><p class="k">The timeless ones</p><h2>Classic<br>pizzas</h2><p class="trio">Neapolitan dough · San Marzano tomato · Fior di latte</p></div><ul><li class=""><div class="top"><h3>Margarita</h3><b>9,00</b></div><p>San Marzano tomato, Fior di latte, basil, extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Marinara</h3><b>8,00</b></div><p>San Marzano tomato, garlic, extra virgin olive oil, oregano.</p></li><li class=""><div class="top"><h3>Prosciutto</h3><b>10,00</b></div><p>San Marzano tomato, Fior di latte, cooked ham, basil.</p></li><li class=""><div class="top"><h3>Pepperoni</h3><b>10,00</b></div><p>San Marzano tomato, Fior di latte, pepperoni, basil.</p></li><li class=""><div class="top"><h3>Romana</h3><b>11,50</b></div><p>San Marzano tomato, Fior di latte, cooked ham, mushrooms, basil.</p></li><li class="feat"><span class="badge">The house pizza</span><div class="top"><h3>Pizza Loco</h3><b>11,50</b></div><p>San Marzano tomato, Fior di latte, tuna, onion, basil.</p></li><li class=""><div class="top"><h3>Napolitana</h3><b>12,00</b></div><p>San Marzano tomato, Fior di latte, anchovies, capers, black olives.</p></li><li class=""><div class="top"><h3>Venta<span class="hot">Spicy</span></h3><b>12,00</b></div><p>San Marzano tomato, Fior di latte, spicy chorizo, onion, black olives.</p></li><li class=""><div class="top"><h3>Vegetal</h3><b>12,00</b></div><p>San Marzano tomato, Fior di latte, mushrooms, onion, pepper, courgette.</p></li><li class=""><div class="top"><h3>Cuatro estaciones</h3><b>12,50</b></div><p>Four seasons: San Marzano tomato, Fior di latte, cooked ham, mushrooms, artichokes, tuna (in quarters).</p></li><li class=""><div class="top"><h3>Carbonara</h3><b>12,50</b></div><p>Cream, Fior di latte, bacon, mushrooms, onion, egg, pepper.</p></li><li class=""><div class="top"><h3>Barbacoa</h3><b>12,50</b></div><p>San Marzano tomato, Fior di latte, bolognese, onion, bacon, barbecue sauce.</p></li><li class=""><div class="top"><h3>Cuatro quesos</h3><b>12,50</b></div><p>Four cheeses: San Marzano tomato, Fior di latte, four-cheese mix, basil.</p></li><li class=""><div class="top"><h3>Tropical</h3><b>11,00</b></div><p>San Marzano tomato, Fior di latte, cooked ham, pineapple, basil.</p></li><li class=""><div class="top"><h3>Kebab</h3><b>13,00</b></div><p>San Marzano tomato, Fior di latte, kebab-style chicken, white sauce.</p></li></ul></section><section class="pg" id="especiales"><div class="sh plain"><span class="flag s"></span><p class="k">When you&#x27;ve tried everything else</p><h2>Special<br>pizzas</h2></div><ul><li class=""><div class="top"><h3>Amatriciana</h3><b>14,00</b></div><p>San Marzano tomato, Fior di latte, onion, crispy pork belly shavings, sun-dried tomato, basil.</p></li><li class=""><div class="top"><h3>Cinco quesos</h3><b>14,00</b></div><p>Five cheeses: Fior di latte, gorgonzola, ricotta, parmesan, cheddar.</p></li><li class=""><div class="top"><h3>Capricciosa</h3><b>14,50</b></div><p>San Marzano tomato, Fior di latte, cooked ham, mushrooms, artichokes, tuna, anchovies, black olives, basil.</p></li><li class=""><div class="top"><h3>Lago di Como</h3><b>14,50</b></div><p>San Marzano tomato, Fior di latte, cooked ham, mushrooms, pepper, bolognese, Roquefort.</p></li><li class=""><div class="top"><h3>Mare e Monti</h3><b>14,50</b></div><p>San Marzano tomato, Fior di latte, prawns, mushrooms, Roquefort.</p></li><li class="ask">Goat cheese, walnuts and honey.<small>Sweet and savoury in one bite: the Granola.</small></li><li class=""><div class="top"><h3>Granola</h3><b>14,00</b></div><p>San Marzano tomato, Fior di latte, goat cheese, caramelised onion, walnuts, honey.</p></li><li class=""><div class="top"><h3>Suprema</h3><b>14,00</b></div><p>Cream, Fior di latte, mixed mushrooms, crispy pork belly shavings, caramelised onion, truffle sauce.</p></li><li class=""><div class="top"><h3>Serrano rúcula</h3><b>14,50</b></div><p>San Marzano tomato, Fior di latte, Duroc serrano ham, cherry tomatoes, rocket, parmesan and extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Bolognese</h3><b>14,00</b></div><p>San Marzano tomato, Fior di latte, mortadella, pistachios, bolognese, ricotta, basil.</p></li><li class="ask">Apple and black pudding on a pizza?<small>Order the Antonia and tell us what you think.</small></li><li class=""><div class="top"><h3>Antonia</h3><b>14,00</b></div><p>San Marzano tomato, Fior di latte, apple, black pudding (morcilla), goat cheese, caramelised onion.</p></li><li class="feat"><span class="badge">With burrata &amp; pistachio</span><div class="top"><h3>Mortalla</h3><b>15,50</b></div><p>San Marzano tomato, Fior di latte, pistachio mortadella, burrata, parmesan, pistachios, pesto.</p></li><li class=""><div class="top"><h3>Búfala</h3><b>14,00</b></div><p>San Marzano tomato, buffalo mozzarella, rocket, cherry tomatoes, parmesan, extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Mexicana<span class="hot">Spicy</span></h3><b>14,00</b></div><p>San Marzano tomato, Fior di latte, bolognese, onion, basil, jalapeños and chipotle sauce.</p></li><li class=""><div class="top"><h3>Secreto</h3><b>14,50</b></div><p>San Marzano tomato, Fior di latte, sun-dried tomato, Iberian pork (secreto), pesto or truffle sauce, basil and extra virgin olive oil.</p></li></ul></section><section class="pg" id="panouzzo"><div class="sh photo"><img src="img/panouzzo.jpg" alt=""><div class="ov"></div><p class="k">Our dough, stuffed to the top</p><h2>Panouzzo</h2></div><ul><li class="ask">Battered squid inside our dough?<small>That&#x27;s the Panouzzo Romana.</small></li><li class=""><div class="top"><h3>Romana</h3><b>12,50</b></div><p>Ricotta, mixed lettuce, mayonnaise or aioli, battered squid rings.</p></li><li class=""><div class="top"><h3>Mortadela</h3><b>14,00</b></div><p>Ricotta, mixed lettuce, pistachio mortadella, burrata, pesto.</p></li><li class=""><div class="top"><h3>Serrano</h3><b>14,00</b></div><p>Ricotta, mixed lettuce, Duroc serrano ham, sun-dried tomatoes, parmesan and extra virgin olive oil.</p></li><li class=""><div class="top"><h3>Polpette</h3><b>12,50</b></div><p>Meatballs with tomato, gorgonzola, parmesan, basil.</p></li><li class=""><div class="top"><h3>Salsiccia</h3><b>10,00</b></div><p>Ricotta, mixed lettuce, sauces, Italian sausage, crispy onion, sun-dried tomatoes, beetroot.</p></li></ul></section><section class="pg" id="postres"><div class="sh plain"><span class="flag s"></span><p class="k">Save some room</p><h2>Desserts</h2></div><ul><li class=""><div class="top"><h3>Tiramisú</h3><b>5,00</b></div><p>Sponge cake, mascarpone, custard, cream, coffee, cocoa.</p></li><li class=""><div class="top"><h3>Tarta de queso</h3><b>5,00</b></div><p>Cheesecake: baked cheeses, cream and eggs with a touch of strawberry.</p></li><li class=""><div class="top"><h3>Tarta al whiski</h3><b>6,00</b></div><p>Whisky cake, made in Granada.</p></li><li class="feat"><span class="badge">Dare to try?</span><div class="top"><h3>Calzone de Nutella</h3><b>9,00</b></div><p>Neapolitan dough, Nutella, icing sugar, pistachio.</p></li><li class=""><div class="top"><h3>Gofre de chocolate</h3><b>5,50</b></div><p>Chocolate waffle.</p></li></ul></section>
+<div class="pg end">
+<span class="flag s"></span>
+<p class="k">See you soon</p>
+<h2>Know what<br>you're having?</h2>
+<a class="btn" href="https://www.google.com/maps/place/Pizza+Loco/@37.1681584,-3.6095901,17z/data=!3m2!4b1!5s0xd71fc90a5211197:0x7edf0a3a55f35c3c!4m6!3m5!1s0xd71fc90ae47c753:0xa0e72d3e5dff9bd8!8m2!3d37.1681584!4d-3.6070152!16s%2Fg%2F11fx8hhqfs">Get directions to Pizza Loco</a>
+<p class="alg"><b>Allergies or intolerances?</b> Please tell our staff before ordering.</p>
+<p class="n">Prices in euros · VAT included<span class="noprint"> · <a href="menu-en.pdf">Download the menu as PDF</a></span></p>
+</div>
+<script>try{var L=[].slice.call(document.querySelectorAll('.bar a')),O=new IntersectionObserver(function(es){es.forEach(function(x){if(x.isIntersecting){L.forEach(function(a){var on=a.getAttribute('href')=='#'+x.target.id;a.classList.toggle('on',on);if(on)a.scrollIntoView({inline:'center',block:'nearest'})})}})},{rootMargin:'-30% 0px -60% 0px'});document.querySelectorAll('section').forEach(function(s){O.observe(s)})}catch(e){}</script>
+</body>
+</html>
