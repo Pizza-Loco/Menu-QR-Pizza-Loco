@@ -20,10 +20,10 @@ MAP = ("https://www.google.com/maps/place/Pizza+Loco/@37.1681584,-3.6095901,17z/
 SECS = [
  ("entrantes", "Entrantes", "Entrantes", "Para abrir boca", "piadina.jpg", "photo"),
  ("ensaladas", "Ensaladas", "Ensaladas", "Frescas y con color", "caprese.jpg", "photo"),
- ("burguer", "Burguer", "Burguer<br>&amp; Food", "Para hambre de la buena", "", "plain"),
+ ("clasicas", "Pizzas Clásicas", "Pizzas<br>Clásicas", "Las de toda la vida", "pizza.jpg", "circle"),
+ ("especiales", "Pizzas Gourmet", "Pizzas<br>Gourmet", "Cuando ya lo has probado todo", "", "plain"),
  ("pastas", "Pastas", "Pastas", "Cremosas, al horno, con parmesano", "pasta.jpg", "photo"),
- ("clasicas", "Clásicas", "Pizzas<br>clásicas", "Las de toda la vida", "pizza.jpg", "circle"),
- ("especiales", "Especiales", "Pizzas<br>especiales", "Cuando ya lo has probado todo", "", "plain"),
+ ("burguer", "Burguer", "Burguer<br>&amp; Food", "Para hambre de la buena", "", "plain"),
  ("panouzzo", "Panouzzo", "Panouzzo", "Nuestra masa, rellena hasta arriba", "panouzzo.jpg", "photo"),
  ("postres", "Postres", "Postres", "Guarda un hueco", "", "plain"),
 ]

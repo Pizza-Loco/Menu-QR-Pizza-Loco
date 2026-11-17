@@ -1,9 +1,9 @@
 # Traducciones al inglés. Los nombres de los platos NO se traducen (así se piden igual en el local).
 EN = {
  # navegación y títulos
- "Entrantes": "Starters", "Ensaladas": "Salads", "Pastas": "Pasta", "Clásicas": "Classics",
- "Especiales": "Specials", "Postres": "Desserts",
- "Pizzas<br>clásicas": "Classic<br>pizzas", "Pizzas<br>especiales": "Special<br>pizzas",
+ "Entrantes": "Starters", "Ensaladas": "Salads", "Pastas": "Pasta", "Pizzas Clásicas": "Classic Pizzas",
+ "Pizzas Gourmet": "Gourmet Pizzas", "Postres": "Desserts",
+ "Pizzas<br>Clásicas": "Classic<br>Pizzas", "Pizzas<br>Gourmet": "Gourmet<br>Pizzas",
  # frases de sección
  "Para abrir boca": "To get you started",
  "Frescas y con color": "Fresh and colourful",
